@@ -13,6 +13,7 @@
 		818647271C43D4F9008F790B /* AlphaBet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 818647251C43D4F9008F790B /* AlphaBet.xcdatamodeld */; };
 		818647291C43D4F9008F790B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 818647281C43D4F9008F790B /* Assets.xcassets */; };
 		8186472C1C43D4F9008F790B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8186472A1C43D4F9008F790B /* LaunchScreen.storyboard */; };
+		818647351C43DFC7008F790B /* VC_MainPagePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 818647341C43DFC7008F790B /* VC_MainPagePlayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		818647281C43D4F9008F790B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8186472B1C43D4F9008F790B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8186472D1C43D4F9008F790B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		818647331C43DFC7008F790B /* VC_MainPagePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_MainPagePlayer.h; sourceTree = "<group>"; };
+		818647341C43DFC7008F790B /* VC_MainPagePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VC_MainPagePlayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +65,8 @@
 				8186471D1C43D4F9008F790B /* AppDelegate.m */,
 				8186471F1C43D4F9008F790B /* ViewController.h */,
 				818647201C43D4F9008F790B /* ViewController.m */,
+				818647331C43DFC7008F790B /* VC_MainPagePlayer.h */,
+				818647341C43DFC7008F790B /* VC_MainPagePlayer.m */,
 				818647191C43D4F9008F790B /* Supporting Files */,
 			);
 			path = AlphaBet;
@@ -151,6 +156,7 @@
 				818647211C43D4F9008F790B /* ViewController.m in Sources */,
 				8186471E1C43D4F9008F790B /* AppDelegate.m in Sources */,
 				818647271C43D4F9008F790B /* AlphaBet.xcdatamodeld in Sources */,
+				818647351C43DFC7008F790B /* VC_MainPagePlayer.m in Sources */,
 				8186471B1C43D4F9008F790B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,6 +298,7 @@
 				818647321C43D4F9008F790B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
