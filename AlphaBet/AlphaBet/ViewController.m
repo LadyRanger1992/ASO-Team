@@ -19,6 +19,7 @@
     [self.view setBackgroundColor:[UIColor whiteColor]];
 }
 
+//First commit 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
