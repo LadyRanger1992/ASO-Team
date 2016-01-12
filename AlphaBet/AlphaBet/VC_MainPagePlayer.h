@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VC_MainPagePlayer : UIViewController
+@interface VC_MainPagePlayer : UIViewController <UICollectionViewDelegate , UICollectionViewDataSource>
+{
+    UILabel* label;
+    UICollectionView* collectionView;
+    
+}
 
 @end
