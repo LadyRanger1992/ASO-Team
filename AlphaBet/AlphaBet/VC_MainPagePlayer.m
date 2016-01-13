@@ -59,25 +59,18 @@
     [_data addObject:@"Z"];
     
     //Create CollectionView
-    
-    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
+    UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
     flowLayout.itemSize = CGSizeMake(100, 100);
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-    //tao ID
-    [_collectionView registerClass:[CC_CollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     
+    _collectionView=[[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:flowLayout];
+    [_collectionView setDataSource:self];
+    [_collectionView setDelegate:self];
     
+    [_collectionView registerClass:[CC_CollectionViewCell class] forCellWithReuseIdentifier:@"cellIdentifier"];
+    [_collectionView setBackgroundColor:[UIColor redColor]];
     
-    collectionView = [[UICollectionView alloc]initWithFrame:self.view.frame collectionViewLayout:flowLayout ];
-    [collectionView setDataSource:self];
-    [collectionView setDelegate:self];
-    [self.view addSubview:collectionView];
-    
-    
-    
-    
-    
-    
+    [self.view addSubview:_collectionView];
     
 }
 
@@ -95,34 +88,13 @@
     return _data.count;
 }
 
-//Tao IndexPath
-
-- (CC_CollectionViewCell *)collectionView:(UICollectionView *)collectionView2 cellForItemAtIndexPath:(NSIndexPath *)indexPath
+-(CC_CollectionViewCell*)collectionView:(UICollectionView*)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    CC_CollectionViewCell* cell = [collectionView2 dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-  
+    CC_CollectionViewCell* cell = [_collectionView dequeueReusableCellWithReuseIdentifier:@"cellIdentifier" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor greenColor];
     //CongThuc tinh indexPath section*3 (3 la số cột trong view)
     NSUInteger index = (indexPath.section*2)+indexPath.row;
     [cell setData:[_data objectAtIndex:index]];
     return cell;
-
 }
-
-
-/*
--(CC_CollectionViewCell*)collectionView:(UICollectionView*)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath
-{
-    
-    CC_CollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath ];
-    cell.backgroundColor = [UIColor greenColor];
-    //CongThuc tinh indexPath section*3 (3 la số cột trong view)
-    NSUInteger index = (indexPath.section*3)+indexPath.row;
-    [cell setData:[_data objectAtIndex:index]];
-    return cell;
- }
-     */
-     
-
-
 @end
