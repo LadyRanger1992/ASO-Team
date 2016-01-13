@@ -11,7 +11,6 @@
 
 @interface VC_MainPagePlayer ()
 {
-    UICollectionView* _collectionView;
     NSMutableArray* _data;
 }
 
@@ -21,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view setBackgroundColor:[UIColor whiteColor]];
+    [self.view setBackgroundColor:[UIColor grayColor]];
     
     /* TEST FIRST VC ========
     label = [[UILabel alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
@@ -57,18 +56,20 @@
     [_data addObject:@"X"];
     [_data addObject:@"Y"];
     [_data addObject:@"Z"];
+    [_data addObject:@"Song"];
     
     //Create CollectionView
     UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
     flowLayout.itemSize = CGSizeMake(100, 100);
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     
-    _collectionView=[[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:flowLayout];
-    [_collectionView setDataSource:self];
+    _collectionView=[[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:flowLayout]; // dung hong? chính xác rồi . Neu anh de collectionView123 thoi ko _ thi sao. Thì không đc
+    [_collectionView setDataSource:self]; // vẫn fails . OK
     [_collectionView setDelegate:self];
     
-    [_collectionView registerClass:[CC_CollectionViewCell class] forCellWithReuseIdentifier:@"cellIdentifier"];
-    [_collectionView setBackgroundColor:[UIColor redColor]];
+    [_collectionView registerClass:[CC_CollectionViewCell class] forCellWithReuseIdentifier:@"cellIdentifier"]; // thằng collectionView ở đây khác thằng _collectionView. Chú ý thằng này vẫn không phải là thằng của mình nhá . OK , anh de Properties nhu ben .h co anh huong gi hong? hay de ben .m dc r
+    
+    [_collectionView setBackgroundColor:[UIColor grayColor]];
     
     [self.view addSubview:_collectionView];
     
@@ -91,10 +92,13 @@
 -(CC_CollectionViewCell*)collectionView:(UICollectionView*)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
     CC_CollectionViewCell* cell = [_collectionView dequeueReusableCellWithReuseIdentifier:@"cellIdentifier" forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor greenColor];
+    //cell.backgroundColor = [UIColor grayColor];
     //CongThuc tinh indexPath section*3 (3 la số cột trong view)
-    NSUInteger index = (indexPath.section*2)+indexPath.row;
-    [cell setData:[_data objectAtIndex:index]];
+   // NSUInteger index = (indexPath.section*3)+indexPath.row;
+    [cell setData:[_data objectAtIndex:indexPath.row]];
     return cell;
 }
+
+
+
 @end

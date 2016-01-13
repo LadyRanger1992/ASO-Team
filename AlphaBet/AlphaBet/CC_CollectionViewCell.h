@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface CC_CollectionViewCell : UICollectionViewCell
 {
@@ -15,4 +17,5 @@
     UITapGestureRecognizer* singleTap;
 }
 @property (strong, nonatomic) NSString* data;
+@property (strong, nonatomic) AVAudioPlayer* player;
 @end
