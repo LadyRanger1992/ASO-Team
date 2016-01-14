@@ -16,14 +16,16 @@
     if (self) {
         hinh = [[UIImageView alloc]initWithFrame:self.bounds];
         [self addSubview:hinh];
-        singleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap)];
+        singleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(gestureTapped)];
         [self addGestureRecognizer:singleTap];
     }
     return self;
 }
 
--(void)tap {
-    NSLog([NSString stringWithFormat:@"Say %@" , _data]);
+-(void)gestureTapped
+{
+    NSLog(@"Say %@",_data);
+    
     //play Sound
     NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@" , _data] ofType:@"wav"];
     NSURL *soundFileURL = [NSURL fileURLWithPath:soundFilePath];
