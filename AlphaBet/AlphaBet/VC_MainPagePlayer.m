@@ -7,7 +7,9 @@
 //
 
 #import "VC_MainPagePlayer.h"
+#import "VC_NavController.h"
 #import "CC_CollectionViewCell.h"
+#import "AlphaBet-Swift.h"
 
 @interface VC_MainPagePlayer ()
 {
@@ -18,15 +20,28 @@
 
 @implementation VC_MainPagePlayer
 
+-(void)loadView
+{
+    [super loadView];
+}
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    [self.view setBackgroundColor:[UIColor grayColor]];
+   [super viewDidLoad];
+    VC_mainBG = [[UIImageView alloc]initWithFrame:self.view.frame];
+    [VC_mainBG setImage:[UIImage imageNamed:@"board"]];
+    [self.view addSubview: VC_mainBG];
+    //[self.view setBackgroundColor:[UIColor grayColor]];
     
-    /* TEST FIRST VC ========
+/* 
+    TEST FIRST VC ========
     label = [[UILabel alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
     label.text = @"Hello";
     [self.view addSubview:label];
-     */
+*/
+    SpringButton* backButton = [[SpringButton alloc]initWithFrame:CGRectMake(150,680, 30, 30)];
+    [backButton setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
+    [self.view addSubview:backButton];
+    [backButton addTarget:self action:@selector(backToHome) forControlEvents:UIControlEventTouchUpInside];
+    
     
     //Create Data Array
     _data = [NSMutableArray new];
@@ -60,20 +75,27 @@
     
     //Create CollectionView
     UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
-    flowLayout.itemSize = CGSizeMake(100, 100);
+    flowLayout.itemSize = CGSizeMake(105, 105);
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     
-    _collectionView=[[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:flowLayout]; // dung hong? chính xác rồi . Neu anh de collectionView123 thoi ko _ thi sao. Thì không đc
+    _collectionView=[[UICollectionView alloc] initWithFrame:CGRectMake(100, 100, 850, 500) collectionViewLayout:flowLayout]; // dung hong? chính xác rồi . Neu anh de collectionView123 thoi ko _ thi sao. Thì không đc
     [_collectionView setDataSource:self]; // vẫn fails . OK
     [_collectionView setDelegate:self];
     
     [_collectionView registerClass:[CC_CollectionViewCell class] forCellWithReuseIdentifier:@"cellIdentifier"]; // thằng collectionView ở đây khác thằng _collectionView. Chú ý thằng này vẫn không phải là thằng của mình nhá . OK , anh de Properties nhu ben .h co anh huong gi hong? hay de ben .m dc r
     
-    [_collectionView setBackgroundColor:[UIColor grayColor]];
+    [_collectionView setBackgroundColor:[UIColor clearColor]];
     
     [self.view addSubview:_collectionView];
     
 }
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[self.navigationController navigationBar] setHidden:YES];
+}
+     
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -98,7 +120,12 @@
     [cell setData:[_data objectAtIndex:indexPath.row]];
     return cell;
 }
-
+-(void)backToHome{
+    VC_NavController* nav = [VC_NavController sharedInstance];
+    [[nav navigationBar] setHidden:YES];
+    nav.navigationBar.barTintColor = [UIColor orangeColor];
+    [nav popToRootViewControllerAnimated:YES];
+}
 
 
 @end

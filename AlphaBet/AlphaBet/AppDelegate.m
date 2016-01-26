@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "VC_NavController.h"
+//#import "VC_MainPagePlayer.h"
 
 @interface AppDelegate ()
 
@@ -16,11 +18,13 @@
 @implementation AppDelegate
 
 
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     ViewController* home = [[ViewController alloc] init];
-    _navController = [[UINavigationController alloc] initWithRootViewController:home];
+    _navController = [VC_NavController sharedInstance];
+    [_navController setViewControllers:@[home]];
     [[_navController navigationBar] setHidden:YES];
     [_window setRootViewController:_navController];
     [_window makeKeyAndVisible];

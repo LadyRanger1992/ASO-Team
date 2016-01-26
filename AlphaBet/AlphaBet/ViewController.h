@@ -10,6 +10,14 @@
 
 @interface ViewController : UIViewController
 
+{
+    
+   // UIButton* button ;
+    UIButton* button2 ;
+    UIImageView* hinhBG;
+
+}
+
 //here
 @end
 

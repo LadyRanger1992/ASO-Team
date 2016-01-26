@@ -13,8 +13,9 @@
 @interface CC_CollectionViewCell : UICollectionViewCell
 {
     //khai bao hinh va tapGesture
-    UIImageView* hinh;
+   // UIImageView* hinh;
     UITapGestureRecognizer* singleTap;
+    NSString* data2;
 }
 @property (strong, nonatomic) NSString* data;
 @property (strong, nonatomic) AVAudioPlayer* player;
